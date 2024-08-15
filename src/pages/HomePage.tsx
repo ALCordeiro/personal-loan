@@ -1,24 +1,25 @@
-import React from 'react';
-import { useForm, SubmitHandler } from "react-hook-form"
+import React, { useCallback } from 'react';
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { Input, Select, Terms } from '../components';
 import LoanEnum from '../common/enums/LoanEnum';
 import { HomePageWrapper } from './HomePage.styles';
-
+import formatCurrency from '../common/utils/formatCurrency';
 
 export interface IFormInput {
   totalAmount: string;
   loanPurpose: string;
+  loanMonths: string;
 }
 
 function HomePage() {
-  const { register, handleSubmit } = useForm<IFormInput>()
+  const { register, handleSubmit, control, setValue } = useForm<IFormInput>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
   const options = [
-    { value: '1', label: LoanEnum.DEBT_CONSOLIDATION },
-    { value: '2', label: LoanEnum.PERSONAL },
-    { value: '3', label: LoanEnum.API_ERROR },
+    { value: 'DEBT_CONSOLIDATION', label: LoanEnum.DEBT_CONSOLIDATION },
+    { value: 'PERSONAL', label: LoanEnum.PERSONAL },
+    { value: 'API_ERROR', label: LoanEnum.API_ERROR },
   ];
 
   const months = [
@@ -28,17 +29,48 @@ function HomePage() {
     { value: '48', label: `48 ${LoanEnum.MONTHS}` },
   ];
 
-  const handleSelect = (option: { value: string; label: string }) => {
-    console.log('Selected option:', option);
+  const handleSelectLoanPurpose = (option: { value: string; label: string }) => {
+    setValue("loanPurpose", option.value);
   };
-  
+
+  const handleSelectLoanMonths = (option: { value: string; label: string }) => {
+    setValue("loanMonths", option.value);
+  };
+
+  const handleKeyUp = useCallback((e: React.FormEvent<HTMLInputElement>) => {
+    formatCurrency(e);
+  }, []);
 
   return (
     <HomePageWrapper>
-      <form onSubmit={handleSubmit((data) => console.log(data))} style={{ width: '458px'}}>
-        <Select options={options} onSelect={handleSelect} placeholder={LoanEnum.SELECT_OPTION} label={LoanEnum.LOAN_PURPOSE} />
-        <Input title={LoanEnum.TOTAL_AMOUNT} register={register} />
-        <Select options={months} onSelect={handleSelect} placeholder={LoanEnum.SELECT_OPTION} label={LoanEnum.LOAN_TERM} />
+      <form onSubmit={handleSubmit(onSubmit)} style={{ width: '458px' }}>
+        <Controller
+          name="loanPurpose"
+          control={control}
+          render={({ field }) => (
+            <Select 
+              options={options} 
+              onSelect={handleSelectLoanPurpose} 
+              placeholder={LoanEnum.SELECT_OPTION} 
+              label={LoanEnum.LOAN_PURPOSE} 
+              {...field}
+            />
+          )}
+        />
+        <Input title={LoanEnum.TOTAL_AMOUNT} handleKeyUp={handleKeyUp} register={register("totalAmount")} />
+        <Controller
+          name="loanMonths"
+          control={control}
+          render={({ field }) => (
+            <Select 
+              options={months} 
+              onSelect={handleSelectLoanMonths} 
+              placeholder={LoanEnum.SELECT_OPTION} 
+              label={LoanEnum.LOAN_TERM} 
+              {...field}
+            />
+          )}
+        />
         <Terms text={LoanEnum.TERMS} />
         <button type="submit">
           Submit
