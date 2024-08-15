@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import fontSize from '../../common/utils/fontSize';
-import { Field } from 'formik';
 
 export const Container = styled.div`
   position: relative;
@@ -11,7 +10,7 @@ export const Container = styled.div`
 	}
 `
 
-export const Text = styled.input`
+export const InputWrapper = styled.input`
   ${fontSize(16)}
   padding: 5px;
   display: block;
@@ -23,23 +22,21 @@ export const Text = styled.input`
   &:focus {
     outline: none;
   }
-
-
 `;
 
 export const Label = styled.label`
   ${fontSize(16)}
   color: #424242;
-  font-size: 18px;
   font-weight: normal;
   position: absolute;
   pointer-events: none;
   left: 8px;
-  top: 30%;
+  top: 35%;
   transition: 0.2s ease all;
+  color: #888888;
   
-  ${Text}:focus ~ &,
-  ${Text}:valid ~ & {
+  ${InputWrapper}:focus ~ &,
+  ${InputWrapper}:valid ~ & {
     top:-8px;
     font-size:14px;
     background-color: white;

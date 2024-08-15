@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import {
   Container,
-  Text, 
+  InputWrapper, 
   Label
 } from './styles'
 import useIsMobile from '../../common/hooks/useIsMobile'
@@ -16,7 +16,7 @@ interface HeaderProps {
 
 const Input: React.FC<HeaderProps> = ({
   title,
-  register
+  register,
 }) => {
   const isMobile = useIsMobile()
 
@@ -29,10 +29,9 @@ const Input: React.FC<HeaderProps> = ({
   }, [])
 
   return (
-    <Container data-testid="club-header">
-      <Text {...register("totalAmount", { min: 0, max: 9999999999, })} required name="totalAmount" onKeyUp={handleKeyUp}/>
-      {isMobile && <Label>{title}</Label>}
-      {!isMobile && <Label>{title}</Label>}
+    <Container>
+      <InputWrapper {...register("totalAmount", { min: 0, max: 9999999999, })} required onKeyUp={handleKeyUp}/>
+      <Label>{title}</Label>
     </Container>
   )
 }
