@@ -4,6 +4,7 @@ import fontSize from '../../common/utils/fontSize';
 export const Container = styled.div`
   position: relative;
   height: 56px;
+  margin-bottom: 24px;
 
 	@media (max-width: 768px) {
 		margin-bottom: 16px;
@@ -15,8 +16,8 @@ export const InputWrapper = styled.input`
   padding: 5px;
   display: block;
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
-  width: 300px;
   border: 2px solid #757575;
   border-radius: 4px;
   &:focus {

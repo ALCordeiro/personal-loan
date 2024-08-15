@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import fontSize from '../../common/utils/fontSize';
-import { Field } from 'formik';
 
 export const DropdownContainer = styled.div`
   position: relative;
@@ -8,6 +7,7 @@ export const DropdownContainer = styled.div`
   width: 100%;
   ${fontSize(16)}
   box-sizing: border-box;
+  margin-bottom: 24px;
 `;
 
 export const DropdownHeader = styled.div<{ isFocused: boolean }>`
@@ -30,7 +30,7 @@ export const DropdownHeader = styled.div<{ isFocused: boolean }>`
 
 export const FloatingLabel = styled.span<{ isFocused: boolean; isSelected: boolean }>`
   position: absolute;
-  left: 12px;
+  left: 8px;
   top: ${({ isFocused, isSelected }) => (isFocused || isSelected ? '-5px' : '50%')};
   transform: translateY(-50%);
   background: #fff;
@@ -46,18 +46,22 @@ export const DropdownList = styled.ul`
   left: 0;
   width: 100%;
   background: #fff;
-  border: 2px solid #757575;
+  text-align: start;
   border-radius: 4px;
   margin: 0;
   padding: 0;
   list-style: none;
   z-index: 1000;
-  max-height: 200px;
+  max-height: 500px;
   overflow-y: auto;
+  box-shadow: 0 10px 10px #8888;
 `;
 
 export const DropdownListItem = styled.li`
   padding: 10px;
+  height: 43px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   color: #424242;
   &:hover {

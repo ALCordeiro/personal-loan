@@ -10,9 +10,10 @@ interface CustomDropdownProps {
   options: Option[];
   onSelect: (option: Option) => void;
   placeholder: string;
+  label: string;
 }
 
-const CustomDropdown: FC<CustomDropdownProps> = ({ options, onSelect, placeholder }) => {
+const CustomDropdown: FC<CustomDropdownProps> = ({ options, onSelect, placeholder, label }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const [isFocused, setIsFocused] = useState(false);
@@ -48,13 +49,14 @@ const CustomDropdown: FC<CustomDropdownProps> = ({ options, onSelect, placeholde
     <DropdownContainer ref={containerRef}>
       <DropdownHeader isFocused={isFocused || isOpen} onClick={handleToggle}>
         <FloatingLabel isFocused={isFocused || isOpen} isSelected={!!selectedOption}>
-          {placeholder}
+          {label}
         </FloatingLabel>
         {selectedOption && selectedOption.label}
         <DropdownIcon open={isOpen}>▼</DropdownIcon>
       </DropdownHeader>
       {isOpen && (
         <DropdownList>
+          <DropdownListItem style={{ pointerEvents: 'none', opacity: 0.6 }}>{placeholder}</DropdownListItem>
           {options.map((option) => (
             <DropdownListItem key={option.value} onClick={() => handleSelect(option)}>
               {option.label}
