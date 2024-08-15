@@ -1,23 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Input } from './components';
+import LoanEnum from './common/enums/LoanEnum'
+import { useForm, SubmitHandler } from "react-hook-form"
+
+export interface IFormInput {
+  totalAmount: string
+}
 
 function App() {
+  const { register, handleSubmit } = useForm<IFormInput>()
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <form onSubmit={handleSubmit((data) => console.log(data))}>
+          <Input title={LoanEnum.TOTAL_AMOUNT} register={register} />
+          <button type="submit">
+            Submit
+          </button>
+        </form>
       </header>
     </div>
   );
