@@ -27,3 +27,6 @@ export const ButtonWrapper = styled.div`
 export const FieldsContainer = styled.div`
   width: 458px;
 `
+export const TermsContainer = styled.div`
+  margin-bottom: 48px;
+`
