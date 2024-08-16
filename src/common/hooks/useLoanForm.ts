@@ -9,14 +9,15 @@ export const useLoanForm = () => {
   const { register, handleSubmit, control, setValue, watch } = useForm<IFormInput>();
   const [offerResponse, setOfferResponse] = useState<OfferResponse | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const totalAmount = watch("totalAmount");
   const loanPurpose = watch("loanPurpose");
   const loanMonths = watch("loanMonths");
 
-  const isFormValid = () => {
+  const isFormValid = useCallback(() => {
     return (totalAmount && totalAmount !== '$') && loanPurpose && loanMonths;
-  };
+  }, [totalAmount, loanPurpose, loanMonths]);
 
   const handleSelectLoanPurpose = (option: { value: string; label: string }) => {
     setValue("loanPurpose", option.value);
@@ -39,17 +40,22 @@ export const useLoanForm = () => {
         return;
       }
 
+      setLoading(true);
       try {
         const data = await fetchOffer(numericAmount, purpose, months);
         setOfferResponse(data);
+        setErrorMessage(null);
       } catch (error) {
         console.error('Error fetching offer:', error);
         setErrorMessage('An error occurred while fetching the offer. Please try again.');
+      } finally {
+        setLoading(false);
       }
     }
   }, 1500), []);
 
   useEffect(() => {
+    setLoading(true);
     if (isFormValid()) {
       handleInputChange(totalAmount, loanPurpose, loanMonths);
     }
@@ -65,6 +71,7 @@ export const useLoanForm = () => {
     handleKeyUp,
     offerResponse,
     isFormValid,
-    errorMessage
+    errorMessage,
+    loading
   };
 };

@@ -18,9 +18,11 @@ function HomePage() {
     offerResponse,
     errorMessage,
     isFormValid,
+    loading
   } = useLoanForm();
 
   const onSubmit = (data: any) => console.log(data);
+  const isButtonDisabled = loading || !isFormValid();
 
   return (
     <FormWrapper onSubmit={handleSubmit(onSubmit)} >
@@ -62,12 +64,20 @@ function HomePage() {
           <TermsContainer>
             <Terms text={LoanEnum.TERMS} />
           </TermsContainer>
-          {errorMessage && <Error errorMessage={errorMessage} />}
-          {isFormValid() && offerResponse && <UpsellOpportunity monthlyPayment={offerResponse.monthlyPayments} apr={offerResponse.apr}></UpsellOpportunity>}
+          {errorMessage ? (
+            <Error errorMessage={errorMessage} />
+          ) : (
+            isFormValid() && offerResponse && (
+              <UpsellOpportunity 
+                monthlyPayment={offerResponse.monthlyPayments} 
+                apr={offerResponse.apr} 
+              />
+            )
+          )}
         </FieldsContainer>
       </HomePageWrapper>
       <ButtonWrapper>
-        <Button type="submit" disabled={!isFormValid()} label={LoanEnum.SUBMIT_APPLICATION} />
+        <Button type="submit" disabled={isButtonDisabled || !!errorMessage} label={LoanEnum.SUBMIT_APPLICATION} />
       </ButtonWrapper>
     </FormWrapper>
   );
