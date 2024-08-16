@@ -8,6 +8,7 @@ import { IFormInput, OfferResponse } from '../interfaces/commonInterfaces';
 export const useLoanForm = () => {
   const { register, handleSubmit, control, setValue, watch } = useForm<IFormInput>();
   const [offerResponse, setOfferResponse] = useState<OfferResponse | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const totalAmount = watch("totalAmount");
   const loanPurpose = watch("loanPurpose");
@@ -32,6 +33,7 @@ export const useLoanForm = () => {
   const handleInputChange = useCallback(debounce(async (amount: string, purpose: string, months: string) => {
     if (amount && purpose && months) {
       const numericAmount = parseFloat(amount.replace(/[^0-9.-]+/g, ""));
+      setErrorMessage(null)
       if (isNaN(numericAmount)) {
         console.error('Invalid amount value');
         return;
@@ -42,12 +44,10 @@ export const useLoanForm = () => {
         setOfferResponse(data);
       } catch (error) {
         console.error('Error fetching offer:', error);
+        setErrorMessage('An error occurred while fetching the offer. Please try again.');
       }
     }
-  }, 1000), []);
-
-  console.log('caiu aqui', offerResponse)
-
+  }, 1500), []);
 
   useEffect(() => {
     if (isFormValid()) {
@@ -65,5 +65,6 @@ export const useLoanForm = () => {
     handleKeyUp,
     offerResponse,
     isFormValid,
+    errorMessage
   };
 };

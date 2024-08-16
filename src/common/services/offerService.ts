@@ -1,4 +1,8 @@
 export const fetchOffer = async (amount: number, loanPurpose: string, loanMonths: string) => {
+  if (loanPurpose === 'API Error') {
+    throw new Error('Simulated API error');
+  }
+
   try {
     const response = await fetch('https://clutch-interview-service.herokuapp.com/offers', {
       method: 'POST',
