@@ -17,6 +17,13 @@ export const FormWrapper = styled.form`
 
 export const ButtonWrapper = styled.div`
   margin-bottom: 20px;
-  margin-top: 20px;
+  padding-top: 20px;
   border-top: 1px solid #E7E7E7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const FieldsContainer = styled.div`
+  width: 458px;
 `
