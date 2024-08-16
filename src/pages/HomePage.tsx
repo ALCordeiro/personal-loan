@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { Input, Select, Terms } from '../components';
 import LoanEnum from '../common/enums/LoanEnum';
@@ -40,23 +40,41 @@ function HomePage() {
     return totalAmount && loanPurpose && loanMonths;
   };
 
-  const handleInputChange = useCallback(debounce(async (value: string) => {
-    if (value) {
+  const handleInputChange = useCallback(debounce(async (amount: string, purpose: string, months: string) => {
+    if (amount && purpose && months) {
+      const numericAmount = parseFloat(amount.replace(/[^0-9.-]+/g, ""));
+      if (isNaN(numericAmount)) {
+        console.error('Invalid amount value');
+        return;
+      }
+
       try {
-        const response = await fetch('/offers', {
+        const response = await fetch('https://clutch-interview-service.herokuapp.com/offers', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ amount: value }),
+          body: JSON.stringify({ amount: numericAmount, loanPurpose: purpose, terms: Number(months) }),
         });
+
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          throw new TypeError("Received non-JSON response");
+        }
+
         const data = await response.json();
-        setOfferResponse(data.message); 
+        setOfferResponse(data);
       } catch (error) {
         console.error('Error posting to /offers:', error);
       }
     }
   }, 1000), []);
+
+  useEffect(() => {
+    if (isFormValid()) {
+      handleInputChange(totalAmount, loanPurpose, loanMonths);
+    }
+  }, [totalAmount, loanPurpose, loanMonths, handleInputChange]);
 
   return (
     <FormWrapper onSubmit={handleSubmit(onSubmit)} >
@@ -79,7 +97,7 @@ function HomePage() {
             title={LoanEnum.TOTAL_AMOUNT} 
             handleKeyUp={(e) => {
               handleKeyUp(e);
-              handleInputChange((e.target as HTMLInputElement).value); // Chame a função debounce
+              handleInputChange((e.target as HTMLInputElement).value, loanPurpose, loanMonths);
             }} 
             register={register("totalAmount")} 
           />
@@ -97,7 +115,7 @@ function HomePage() {
             )}
           />
           <Terms text={LoanEnum.TERMS} />
-          {offerResponse && <div>{offerResponse}</div>} {/* Exibir a resposta abaixo de <Terms> */}
+          {offerResponse && <div>chegou algo</div>}
         </FieldsContainer>
       </HomePageWrapper>
       <ButtonWrapper>

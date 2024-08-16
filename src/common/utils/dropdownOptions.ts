@@ -1,9 +1,9 @@
 import LoanEnum from "../enums/LoanEnum";
 
 export const loanPurposeOptions = [
-  { value: '1', label: LoanEnum.DEBT_CONSOLIDATION },
-  { value: '2', label: LoanEnum.PERSONAL },
-  { value: '3', label: LoanEnum.API_ERROR },
+  { value: LoanEnum.DEBT_CONSOLIDATION, label: LoanEnum.DEBT_CONSOLIDATION },
+  { value: LoanEnum.PERSONAL, label: LoanEnum.PERSONAL },
+  { value: LoanEnum.API_ERROR, label: LoanEnum.API_ERROR },
 ];
 
 export const months = [
