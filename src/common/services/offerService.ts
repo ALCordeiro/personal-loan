@@ -17,6 +17,11 @@ export const fetchOffer = async (amount: number, loanPurpose: string, loanMonths
       throw new TypeError("Received non-JSON response");
     }
 
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Failed to fetch offer');
+    }
+
     return await response.json();
   } catch (error) {
     console.error('Error posting to /offers:', error);
