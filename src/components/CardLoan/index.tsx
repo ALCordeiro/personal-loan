@@ -24,6 +24,8 @@ interface HeaderProps {
   money: string;
   imageTitle: string;
   imageSubtitle: string;
+  apr: string;
+  timeRemaining: string
 }
 
 const CardLoan: React.FC<HeaderProps> = ({
@@ -31,6 +33,8 @@ const CardLoan: React.FC<HeaderProps> = ({
   money,
   imageTitle,
   imageSubtitle,
+  apr,
+  timeRemaining
 }) => {
   const isMobile = useIsMobile();
 
@@ -53,8 +57,8 @@ const CardLoan: React.FC<HeaderProps> = ({
           <FirstBlock>Time remaining</FirstBlock>
         </FirstBlockContainer>
         <SecondBlockContainer>
-          <SecondBlock>123</SecondBlock>
-          <SecondBlock>85mo</SecondBlock>
+          <SecondBlock>{apr}</SecondBlock>
+          <SecondBlock>{timeRemaining}</SecondBlock>
         </SecondBlockContainer>
       </LoanInfoContainer>
     </Container>

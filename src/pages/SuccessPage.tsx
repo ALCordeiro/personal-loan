@@ -1,14 +1,16 @@
 import React from 'react';
-import { SuccessContainer, CheckIcon, ThankYouText, InfoText, PhoneNumber, SpeedUpText, TextContainer, IconImage } from './SuccessPage.styles';
+import { SuccessContainer, CheckIcon, ThankYouText, InfoText, PhoneNumber, SpeedUpText, TextContainer, IconImage, CardsContainer } from './SuccessPage.styles';
 import { useFormSubmission } from '../context/FormSubmissionContext';
 import { Navigate } from 'react-router-dom';
 import checkIcon from '../common/icons/success-icon.svg';
 import LoanEnum from '../common/enums/LoanEnum';
 import CardLoan from '../components/CardLoan';
+import useIsMobile from '../common/hooks/useIsMobile';
 
 
 const SuccessPage: React.FC = () => {
   const { isFormSubmitted } = useFormSubmission();
+  const isMobile = useIsMobile();
 
   if (!isFormSubmitted) {
     return <Navigate to="/" />;
@@ -28,10 +30,12 @@ const SuccessPage: React.FC = () => {
           <SpeedUpText>{LoanEnum.SPEED_UP_TEXT}</SpeedUpText>
         </TextContainer>
       </SuccessContainer>
-      <div>
-        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil'/>
-        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil'/>
-      </div>
+      <CardsContainer isMobile={isMobile}>
+        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil' apr={'2.49%'} timeRemaining='85'/>
+        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil' apr={'2.49%'} timeRemaining='85'/>
+        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil' apr={'2.49%'} timeRemaining='85'/>
+        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil' apr={'2.49%'} timeRemaining='85'/>
+      </CardsContainer>
 
     </>
   );

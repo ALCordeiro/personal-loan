@@ -46,3 +46,10 @@ export const TextContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `
+
+export const CardsContainer = styled.div<{ isMobile: boolean; }>`
+  gap: 50px;
+  display: grid;
+  grid-template-columns: ${({ isMobile }) => (isMobile ? '1fr' : '1fr 1fr')};
+  padding: 50px 15%;
+`
