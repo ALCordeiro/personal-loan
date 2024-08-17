@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import debounce from 'lodash/debounce';
 import { fetchOffer } from '../services/offerService';
 import formatCurrency from '../utils/formatCurrency';
@@ -28,13 +28,15 @@ export const useLoanForm = () => {
   };
 
   const handleKeyUp = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-    formatCurrency(e);
-  }, []);
+    const input = e.currentTarget as HTMLInputElement;
+    const formattedValue = formatCurrency(input.value);
+    setValue("totalAmount", formattedValue);
+  }, [setValue]);
 
   const handleInputChange = useCallback(debounce(async (amount: string, purpose: string, months: string) => {
     if (amount && purpose && months) {
       const numericAmount = parseFloat(amount.replace(/[^0-9.-]+/g, ""));
-      setErrorMessage(null)
+      setErrorMessage(null);
       if (isNaN(numericAmount)) {
         console.error('Invalid amount value');
         return;
@@ -52,15 +54,15 @@ export const useLoanForm = () => {
         setLoading(false);
       }
     }
-  }, 1500), []);
+  }, 2000), []);
 
   useEffect(() => {
     setLoading(true);
     if (isFormValid()) {
       handleInputChange(totalAmount, loanPurpose, loanMonths);
     }
-    return setOfferResponse(null)
-  }, [totalAmount, loanPurpose, loanMonths, handleInputChange]);
+    return () => setOfferResponse(null);
+  }, [totalAmount, loanPurpose, loanMonths, handleInputChange, isFormValid]);
 
   return {
     register,

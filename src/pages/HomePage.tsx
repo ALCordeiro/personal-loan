@@ -6,8 +6,7 @@ import { ButtonWrapper, FieldsContainer, FormWrapper, HomePageWrapper, TermsCont
 import Button from '../components/Button';
 import { loanPurposeOptions, months } from '../common/utils/dropdownOptions';
 import { useLoanForm } from '../common/hooks/useLoanForm';
-import { useNavigate } from 'react-router-dom';
-import { useFormSubmission } from '../context/FormSubmissionContext';
+import { useSubmitLoanForm } from '../common/hooks/useSubmitLoanForm';
 
 const HomePage: React.FC = () => {
   const {
@@ -23,14 +22,8 @@ const HomePage: React.FC = () => {
     loading
   } = useLoanForm();
 
-  const navigate = useNavigate();
-  const { setFormSubmitted } = useFormSubmission();
+  const { onSubmit } = useSubmitLoanForm();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    setFormSubmitted(true);
-    navigate('/success');
-  };
   const isButtonDisabled = loading || !isFormValid();
 
   return (
