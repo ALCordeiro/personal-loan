@@ -38,6 +38,8 @@ export const ButtonWrapper = styled.div<{ isMobile: boolean }>`
   margin-bottom: 20px;
   padding-top: 20px;
   border-top: ${({ isMobile }) => (isMobile ? '0px' : '1px solid #E7E7E7')};
+  margin-right: ${({ isMobile }) => (isMobile ? '15%' : '0')};
+  margin-left: ${({ isMobile }) => (isMobile ? '15%' : '0')};
   display: flex;
   justify-content: center;
   align-items: center;
