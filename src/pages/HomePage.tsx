@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller } from "react-hook-form";
-import { Input, Select, Terms, UpsellOpportunity, Error, Button, Header } from '../components';
+import { Input, Terms, UpsellOpportunity, Error, Button, CustomDropdown } from '../components';
 import LoanEnum from '../common/enums/LoanEnum';
 import { ButtonWrapper, FieldsContainer, FormWrapper, HomePageTitle, HomePageWrapper, TermsContainer } from './HomePage.styles';
 import { loanPurposeOptions, months } from '../common/utils/dropdownOptions';
@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
               name="loanPurpose"
               control={control}
               render={({ field }) => (
-                <Select 
+                <CustomDropdown 
                   options={loanPurposeOptions} 
                   onSelect={handleSelectLoanPurpose} 
                   placeholder={LoanEnum.SELECT_OPTION} 
@@ -58,7 +58,7 @@ const HomePage: React.FC = () => {
               name="loanMonths"
               control={control}
               render={({ field }) => (
-                <Select 
+                <CustomDropdown 
                   options={months} 
                   onSelect={handleSelectLoanMonths} 
                   placeholder={LoanEnum.SELECT_OPTION} 

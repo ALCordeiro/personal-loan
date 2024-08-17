@@ -1,5 +1,5 @@
 import React, { useState, FC, useRef, useEffect } from 'react';
-import { DropdownContainer, DropdownHeader, DropdownIcon, DropdownList, DropdownListItem, FloatingLabel } from './Select.styles';
+import { DropdownContainer, DropdownHeader, DropdownIcon, DropdownList, DropdownListItem, FloatingLabel } from './CustomDropdown.styles';
 
 interface Option {
   value: string;
