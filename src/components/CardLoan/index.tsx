@@ -14,12 +14,18 @@ import {
   SecondBlockContainer,
   SecondBlock,
   FirstBlockContainer,
-
+  IconImage,
+  ButtonContainer,
 } from './styles';
 import useIsMobile from '../../common/hooks/useIsMobile';
 import convertCurrency from '../../common/utils/convertCurrency';
+import useDraggableCard from '../../common/hooks/useDraggableCard';
+import vertIcon from '../../common/icons/vert.svg';
+import Button from '../Button';
+import LoanEnum from '../../common/enums/LoanEnum';
 
 interface HeaderProps {
+  id: string;
   title: string;
   money: number;
   automobile: {
@@ -30,20 +36,26 @@ interface HeaderProps {
     accord: string;
   }
   apr: string;
-  timeRemaining: string
+  timeRemaining: string;
+  index: number;
+  moveCard: (dragIndex: number, hoverIndex: number) => void;
 }
 
 const CardLoan: React.FC<HeaderProps> = ({
+  id,
   title,
   money,
   automobile,
   apr,
-  timeRemaining
+  timeRemaining,
+  index,
+  moveCard
 }) => {
   const isMobile = useIsMobile();
+  const { ref, isDragging } = useDraggableCard({ id, index, moveCard });
 
   return (
-    <Container>
+    <Container ref={ref} style={{ opacity: isDragging ? 0.5 : 1 }}>
       <TitleContainer>
         <Title>{title}</Title>
         <Money>{convertCurrency(money)}/month</Money>
@@ -53,7 +65,8 @@ const CardLoan: React.FC<HeaderProps> = ({
         <ImageInformationsContainer>
           <ImageTitle>{automobile.year} {automobile.make} {automobile.accord}</ImageTitle>
           <ImageSubtitle>Estimated {automobile.mileage} mil</ImageSubtitle>
-        </ImageInformationsContainer> 
+        </ImageInformationsContainer>
+        <IconImage src={vertIcon} />
       </ImageBlockContainer>
       <LoanInfoContainer>   
         <FirstBlockContainer>
@@ -65,6 +78,9 @@ const CardLoan: React.FC<HeaderProps> = ({
           <SecondBlock>{timeRemaining} mo</SecondBlock>
         </SecondBlockContainer>
       </LoanInfoContainer>
+      <ButtonContainer>
+        <Button type="button" disabled={false} label={LoanEnum.START_SAVING} />
+      </ButtonContainer>
     </Container>
   );
 };

@@ -31,7 +31,7 @@ export const Money = styled.span`
 
 export const ImageBlockContainer = styled.div`
   display: grid;
-  grid-template-columns: 74px 304px 3fr;
+  grid-template-columns: 1fr 4fr 0.1fr;
   border-bottom: 1px solid #E7E7E7;
   padding-bottom: 20px;
   margin-bottom: 20px;
@@ -84,4 +84,17 @@ export const SecondBlockContainer = styled.div`
   justify-content: space-between;
   margin-bottom: 10px;
   flex-direction: column
+`
+
+export const IconImage = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
+export const ButtonContainer = styled.div`
+  margin-top: 20px;
+
+  & button {
+    width: 100%;
+  }
 `
