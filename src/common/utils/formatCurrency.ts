@@ -1,3 +1,5 @@
+import convertCurrency from "./convertCurrency";
+
 const formatCurrency = (value: string): string => {
   if (!value) return '';
 
@@ -8,12 +10,7 @@ const formatCurrency = (value: string): string => {
 
   if (isNaN(floatValue)) return '';
 
-  return floatValue.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+  return convertCurrency(floatValue)
 };
 
 export default formatCurrency;

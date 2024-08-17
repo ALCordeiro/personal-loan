@@ -9,7 +9,7 @@ import useIsMobile from '../../common/hooks/useIsMobile';
 import LoanEnum from '../../common/enums/LoanEnum';
 
 interface HeaderProps {
-  monthlyPayment: number;
+  monthlyPayment: string;
   apr: number;
 }
 
@@ -23,7 +23,7 @@ const UpsellOpportunity: React.FC<HeaderProps> = ({
     <Container>
       <UpsellBlock>
         <Field>{LoanEnum.MONTHLY_PAYMENT}</Field>
-        <Result>${monthlyPayment}</Result>
+        <Result>{monthlyPayment}</Result>
       </UpsellBlock>
       <UpsellBlock>
         <Field>{LoanEnum.APR}</Field>

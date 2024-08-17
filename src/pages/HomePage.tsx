@@ -7,6 +7,7 @@ import Button from '../components/Button';
 import { loanPurposeOptions, months } from '../common/utils/dropdownOptions';
 import { useLoanForm } from '../common/hooks/useLoanForm';
 import { useSubmitLoanForm } from '../common/hooks/useSubmitLoanForm';
+import convertCurrency from '../common/utils/convertCurrency';
 
 const HomePage: React.FC = () => {
   const {
@@ -71,7 +72,7 @@ const HomePage: React.FC = () => {
           ) : (
             isFormValid() && offerResponse && (
               <UpsellOpportunity 
-                monthlyPayment={offerResponse.monthlyPayments} 
+                monthlyPayment={convertCurrency(offerResponse.monthlyPayments)} 
                 apr={offerResponse.apr} 
               />
             )

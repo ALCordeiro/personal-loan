@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import debounce from 'lodash/debounce';
 import { fetchOffer } from '../services/offerService';
 import formatCurrency from '../utils/formatCurrency';
@@ -27,11 +27,15 @@ export const useLoanForm = () => {
     setValue("loanMonths", option.value);
   };
 
+  const debouncedFormatCurrency = useCallback(debounce((value: string) => {
+    const formattedValue = formatCurrency(value);
+    setValue("totalAmount", formattedValue);
+  }, 500), [setValue]);
+
   const handleKeyUp = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     const input = e.currentTarget as HTMLInputElement;
-    const formattedValue = formatCurrency(input.value);
-    setValue("totalAmount", formattedValue);
-  }, [setValue]);
+    debouncedFormatCurrency(input.value);
+  }, [debouncedFormatCurrency]);
 
   const handleInputChange = useCallback(debounce(async (amount: string, purpose: string, months: string) => {
     if (amount && purpose && months) {
