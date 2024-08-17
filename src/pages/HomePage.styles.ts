@@ -48,6 +48,7 @@ export const ButtonWrapper = styled.div<{ isMobile: boolean }>`
 export const FieldsContainer = styled.div<{ isMobile: boolean }>`
   width: ${({ isMobile }) => (isMobile ? 'auto' : '458px')};
 `
-export const TermsContainer = styled.div`
-  min-height: 500px;
+export const TermsContainer = styled.div<{ isMobile: boolean }>`
+  margin-bottom: 24px;
+  min-height: ${({ isMobile }) => (isMobile ? '500px' : '0px')};;
 `

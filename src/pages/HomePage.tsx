@@ -68,7 +68,7 @@ const HomePage: React.FC = () => {
               )}
             />
           </div>
-          {!isMobile && <TermsContainer>
+          {!isMobile && <TermsContainer isMobile={isMobile}>
             <Terms text={LoanEnum.TERMS} />
           </TermsContainer>}
           {errorMessage ? (
@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
             )
           )}
         </FieldsContainer>
-        {isMobile && <TermsContainer>
+        {isMobile && <TermsContainer isMobile={isMobile}>
           <Terms text={LoanEnum.TERMS} />
         </TermsContainer>}
       </HomePageWrapper>

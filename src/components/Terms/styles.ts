@@ -3,7 +3,6 @@ import fontSize from '../../common/utils/fontSize';
 
 export const Container = styled.div<{ isMobile: boolean }>`
   position: relative;
-  height: 64px;
   margin-bottom: 24px;
   display: flex;
   ${({ isMobile }) => (isMobile ? 'display: flex; align-items: flex-end; height: 100%' : 'block' )};
