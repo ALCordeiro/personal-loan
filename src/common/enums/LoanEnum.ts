@@ -16,7 +16,10 @@ enum LoanEnum {
 	LOAN_OFFICER = 'A loan officer will reach out to you shortly. If you have any other questions please call us at',
 	THANK_YOU = 'Thank you!',
 	PHONE = '(202) 555-0139',
-	START_SAVING= 'Start Saving'
+	START_SAVING= 'Start Saving',
+	SAVING_AVAILABLE = 'Savings Available',
+	YOU_COULD_SAVING = 'You could be saving money ',
+	EXISTINGS_LOANS = 'on your existing loans'
 }
 
 export default LoanEnum

@@ -5,3 +5,6 @@ export { default as UpsellOpportunity } from './UpsellOpportunity';
 export { default as Error } from './Error';
 export { default as CardLoan } from './CardLoan';
 export { default as Button } from './Button';
+export { default as Header } from './Header';
+export { default as Badge } from './Badge';
+

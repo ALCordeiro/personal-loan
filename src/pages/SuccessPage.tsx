@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { SuccessContainer, CheckIcon, ThankYouText, InfoText, PhoneNumber, SpeedUpText, TextContainer, IconImage, CardsContainer } from './SuccessPage.styles';
+import { SuccessContainer, CheckIcon, ThankYouText, InfoText, PhoneNumber, SpeedUpText, TextContainer, IconImage, CardsContainer, ContainerBadge, BadgeAuxText } from './SuccessPage.styles';
 import { useFormSubmission } from '../context/FormSubmissionContext';
 import checkIcon from '../common/icons/success-icon.svg';
 import LoanEnum from '../common/enums/LoanEnum';
@@ -8,7 +8,7 @@ import useIsMobile from '../common/hooks/useIsMobile';
 import { useUserData } from '../common/hooks/useUserData';
 import update from 'immutability-helper';
 import { Loan } from '../common/interfaces/commonInterfaces';
-import { CardLoan } from '../components';
+import { Badge, CardLoan } from '../components';
 
 const SuccessPage: React.FC = () => {
   const { isFormSubmitted } = useFormSubmission();
@@ -54,6 +54,10 @@ const SuccessPage: React.FC = () => {
           <SpeedUpText>{LoanEnum.SPEED_UP_TEXT}</SpeedUpText>
         </TextContainer>
       </SuccessContainer>
+      <ContainerBadge>
+        <Badge title={LoanEnum.SAVING_AVAILABLE} />
+        <BadgeAuxText><strong>{LoanEnum.YOU_COULD_SAVING}</strong>{LoanEnum.EXISTINGS_LOANS}</BadgeAuxText>
+      </ContainerBadge>
       <CardsContainer isMobile={isMobile}>
         {loans.map((loan: Loan, index: number) => (
           <CardLoan

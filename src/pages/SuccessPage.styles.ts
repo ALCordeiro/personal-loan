@@ -5,9 +5,19 @@ export const SuccessContainer = styled.div`
   background-color: #7146B5;
   color: white;
 
-  padding: 50px 15%;
+  padding: 100px 15% 50px 15%;
   height: 288px;
 `;
+
+export const ContainerBadge = styled.div`
+  padding: 50px 15% 0px 15%;
+`;
+
+export const BadgeAuxText = styled.span`
+  ${fontSize(16)}
+  font-weight: 400;
+  color: #585858;
+`
 
 export const CheckIcon = styled.div`
   width: 85px;

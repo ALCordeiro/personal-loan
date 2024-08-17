@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller } from "react-hook-form";
-import { Input, Select, Terms, UpsellOpportunity, Error, Button } from '../components';
+import { Input, Select, Terms, UpsellOpportunity, Error, Button, Header } from '../components';
 import LoanEnum from '../common/enums/LoanEnum';
 import { ButtonWrapper, FieldsContainer, FormWrapper, HomePageWrapper, TermsContainer } from './HomePage.styles';
 import { loanPurposeOptions, months } from '../common/utils/dropdownOptions';

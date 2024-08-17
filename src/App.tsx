@@ -7,10 +7,12 @@ import SuccessPage from './pages/SuccessPage';
 import { FormSubmissionProvider } from './context/FormSubmissionContext';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { Header } from './components';
 
 function App() {
   return (
     <AppWrapper>
+      <Header />
       <DndProvider backend={HTML5Backend}>
         <FormSubmissionProvider>
           <Router>
