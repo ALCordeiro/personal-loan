@@ -10,10 +10,6 @@ export const Container = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-	@media (max-width: 768px) {
-		margin-bottom: 16px;
-	}
 `
 
 export const Title = styled.span`

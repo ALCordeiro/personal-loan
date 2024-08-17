@@ -5,10 +5,6 @@ export const Container = styled.div`
   position: relative;
   height: 64px;
   margin-bottom: 24px;
-
-	@media (max-width: 768px) {
-		margin-bottom: 16px;
-	}
 `
 
 export const TextFragment = styled.div`

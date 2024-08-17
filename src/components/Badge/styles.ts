@@ -10,4 +10,5 @@ export const Container = styled.div`
   text-transform: uppercase;
   border-radius: 4px;
   font-weight: 700;
+  margin: 16px 0px;
 `
