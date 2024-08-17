@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ButtonComponent,
-} from './styles';
+} from './Button.styles';
 import useIsMobile from '../../common/hooks/useIsMobile';
 
 interface IButtonProps {
@@ -15,7 +15,7 @@ const Button: React.FC<IButtonProps> = ({
   disabled,
   label,
   ...props
-}) => {
+}: IButtonProps) => {
   const isMobile = useIsMobile();
 
   return (

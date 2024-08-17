@@ -2,16 +2,16 @@ import React from 'react'
 import {
   Container,
   TextFragment
-} from './styles'
+} from './Terms.styles'
 import useIsMobile from '../../common/hooks/useIsMobile';
 
-interface HeaderProps {
+interface ITermsProps {
   text: string;
 }
 
-const Terms: React.FC<HeaderProps> = ({
+const Terms: React.FC<ITermsProps> = ({
   text,
-}) => {
+}: ITermsProps) => {
 
   const isMobile = useIsMobile();
 

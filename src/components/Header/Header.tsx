@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeaderContainer, Icon, LogoContainer } from './styles';
+import { HeaderContainer, Icon, LogoContainer } from './Header.styles';
 import loremLogo from '../../common/icons/lorem-logo.png';
 
 const Header = () => {

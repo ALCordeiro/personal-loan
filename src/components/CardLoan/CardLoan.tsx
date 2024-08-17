@@ -16,12 +16,11 @@ import {
   FirstBlockContainer,
   IconImage,
   ButtonContainer,
-} from './styles';
-import useIsMobile from '../../common/hooks/useIsMobile';
+} from './CardLoan.styles';
 import convertCurrency from '../../common/utils/convertCurrency';
 import useDraggableCard from '../../common/hooks/useDraggableCard';
 import vertIcon from '../../common/icons/vert.svg';
-import Button from '../Button';
+import Button from '../Button/Button';
 import LoanEnum from '../../common/enums/LoanEnum';
 
 interface ICardLoanProps {
@@ -50,8 +49,7 @@ const CardLoan: React.FC<ICardLoanProps> = ({
   timeRemaining,
   index,
   moveCard
-}) => {
-  const isMobile = useIsMobile();
+}: ICardLoanProps) => {
   const { ref, isDragging } = useDraggableCard({ id, index, moveCard });
 
   return (

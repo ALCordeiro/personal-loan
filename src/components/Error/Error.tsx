@@ -1,8 +1,7 @@
 import React from 'react';
 import {
   ErrorComponent,
-} from './styles';
-import useIsMobile from '../../common/hooks/useIsMobile';
+} from './Error.styles';
 
 interface IErrorProps {
   errorMessage: string;
@@ -10,8 +9,7 @@ interface IErrorProps {
 
 const Error: React.FC<IErrorProps> = ({
   errorMessage,
-}) => {
-  const isMobile = useIsMobile();
+}: IErrorProps) => {
 
   return (
     <ErrorComponent>{errorMessage}</ErrorComponent>

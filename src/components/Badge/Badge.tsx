@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Container,
-} from './styles';
+} from './Badge.styles';
 
 interface IBadgeProps {
   title: string;
@@ -9,7 +9,7 @@ interface IBadgeProps {
 
 const Badge: React.FC<IBadgeProps> = ({
   title,
-}) => {
+}: IBadgeProps) => {
 
   return (
     <Container>

@@ -1,5 +1,5 @@
 import React, { useState, FC, useRef, useEffect } from 'react';
-import { DropdownContainer, DropdownHeader, DropdownIcon, DropdownList, DropdownListItem, FloatingLabel } from './styles';
+import { DropdownContainer, DropdownHeader, DropdownIcon, DropdownList, DropdownListItem, FloatingLabel } from './Select.styles';
 
 interface Option {
   value: string;
@@ -13,7 +13,7 @@ interface CustomDropdownProps {
   label: string;
 }
 
-const CustomDropdown: FC<CustomDropdownProps> = ({ options, onSelect, placeholder, label }) => {
+const CustomDropdown: FC<CustomDropdownProps> = ({ options, onSelect, placeholder, label }: CustomDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const [isFocused, setIsFocused] = useState(false);

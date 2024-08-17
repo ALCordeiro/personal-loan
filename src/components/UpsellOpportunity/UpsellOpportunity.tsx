@@ -4,20 +4,18 @@ import {
   Field,
   Result,
   UpsellBlock
-} from './styles';
-import useIsMobile from '../../common/hooks/useIsMobile';
+} from './UpsellOpportunity.styles';
 import LoanEnum from '../../common/enums/LoanEnum';
 
-interface HeaderProps {
+interface IUpsellOpportunity {
   monthlyPayment: string;
   apr: number;
 }
 
-const UpsellOpportunity: React.FC<HeaderProps> = ({
+const UpsellOpportunity: React.FC<IUpsellOpportunity> = ({
   monthlyPayment,
   apr,
-}) => {
-  const isMobile = useIsMobile();
+}: IUpsellOpportunity) => {
 
   return (
     <Container>
