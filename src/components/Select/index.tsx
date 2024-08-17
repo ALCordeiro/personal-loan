@@ -68,4 +68,4 @@ const CustomDropdown: FC<CustomDropdownProps> = ({ options, onSelect, placeholde
   );
 };
 
-export default CustomDropdown;
+export default React.memo(CustomDropdown);

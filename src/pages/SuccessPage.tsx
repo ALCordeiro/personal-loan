@@ -4,11 +4,11 @@ import { SuccessContainer, CheckIcon, ThankYouText, InfoText, PhoneNumber, Speed
 import { useFormSubmission } from '../context/FormSubmissionContext';
 import checkIcon from '../common/icons/success-icon.svg';
 import LoanEnum from '../common/enums/LoanEnum';
-import CardLoan from '../components/CardLoan';
 import useIsMobile from '../common/hooks/useIsMobile';
 import { useUserData } from '../common/hooks/useUserData';
 import update from 'immutability-helper';
 import { Loan } from '../common/interfaces/commonInterfaces';
+import { CardLoan } from '../components';
 
 const SuccessPage: React.FC = () => {
   const { isFormSubmitted } = useFormSubmission();
