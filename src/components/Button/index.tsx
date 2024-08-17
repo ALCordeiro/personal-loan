@@ -19,7 +19,7 @@ const Button: React.FC<IButtonProps> = ({
   const isMobile = useIsMobile();
 
   return (
-    <ButtonComponent type={type} disabled={disabled} {...props} isDisabled={disabled}>
+    <ButtonComponent type={type} disabled={disabled} {...props} isDisabled={disabled} isMobile={isMobile}>
       {label}
     </ButtonComponent>
   );

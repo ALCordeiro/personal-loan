@@ -3,6 +3,7 @@ import {
   Container,
   TextFragment
 } from './styles'
+import useIsMobile from '../../common/hooks/useIsMobile';
 
 interface HeaderProps {
   text: string;
@@ -12,8 +13,10 @@ const Terms: React.FC<HeaderProps> = ({
   text,
 }) => {
 
+  const isMobile = useIsMobile();
+
   return (
-    <Container>
+    <Container isMobile={isMobile}>
       <TextFragment>{text}</TextFragment>
     </Container>
   )

@@ -47,5 +47,5 @@ export const FieldsContainer = styled.div<{ isMobile: boolean }>`
   width: ${({ isMobile }) => (isMobile ? 'auto' : '458px')};
 `
 export const TermsContainer = styled.div`
-  margin-bottom: 48px;
+  min-height: 500px;
 `

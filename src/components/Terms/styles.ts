@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import fontSize from '../../common/utils/fontSize';
 
-export const Container = styled.div`
+export const Container = styled.div<{ isMobile: boolean }>`
   position: relative;
   height: 64px;
   margin-bottom: 24px;
+  display: flex;
+  ${({ isMobile }) => (isMobile ? 'display: flex; align-items: flex-end; height: 100%' : 'block' )};
 `
 
 export const TextFragment = styled.div`
