@@ -7,13 +7,13 @@ import {
 import useIsMobile from '../../common/hooks/useIsMobile';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
-interface HeaderProps {
+interface IInputProps {
   title: string;
   handleKeyUp: (e: React.FormEvent<HTMLInputElement>) => void;
   register: UseFormRegisterReturn;
 }
 
-const Input: React.FC<HeaderProps> = ({
+const Input: React.FC<IInputProps> = ({
   title,
   handleKeyUp,
   register,

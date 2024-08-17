@@ -4,13 +4,13 @@ import {
 } from './styles';
 import useIsMobile from '../../common/hooks/useIsMobile';
 
-interface HeaderProps {
+interface IButtonProps {
   type: "button" | "reset" | "submit" | undefined;
   disabled: boolean;
   label: string;
 }
 
-const Button: React.FC<HeaderProps> = ({
+const Button: React.FC<IButtonProps> = ({
   type,
   disabled,
   label,

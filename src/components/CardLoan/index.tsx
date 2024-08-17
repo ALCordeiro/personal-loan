@@ -24,7 +24,7 @@ import vertIcon from '../../common/icons/vert.svg';
 import Button from '../Button';
 import LoanEnum from '../../common/enums/LoanEnum';
 
-interface HeaderProps {
+interface ICardLoanProps {
   id: string;
   title: string;
   money: number;
@@ -41,7 +41,7 @@ interface HeaderProps {
   moveCard: (dragIndex: number, hoverIndex: number) => void;
 }
 
-const CardLoan: React.FC<HeaderProps> = ({
+const CardLoan: React.FC<ICardLoanProps> = ({
   id,
   title,
   money,

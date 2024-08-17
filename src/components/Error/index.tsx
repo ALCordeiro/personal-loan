@@ -4,11 +4,11 @@ import {
 } from './styles';
 import useIsMobile from '../../common/hooks/useIsMobile';
 
-interface HeaderProps {
+interface IErrorProps {
   errorMessage: string;
 }
 
-const Error: React.FC<HeaderProps> = ({
+const Error: React.FC<IErrorProps> = ({
   errorMessage,
 }) => {
   const isMobile = useIsMobile();
