@@ -16,7 +16,7 @@ export const useSubmitLoanForm = () => {
       const response = await submitLoanApplication(numericAmount, data.loanPurpose, data.loanMonths);
       console.log(response);
       setFormSubmitted(true);
-      navigate('/success');
+      navigate('/success', { state: { userId: response } });
     } catch (error) {
       console.error('Failed to submit loan application:', error);
       setSubmissionError('Error');

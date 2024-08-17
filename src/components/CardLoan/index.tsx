@@ -17,13 +17,18 @@ import {
 
 } from './styles';
 import useIsMobile from '../../common/hooks/useIsMobile';
-import imageMock from './img/logo512.png';
+import convertCurrency from '../../common/utils/convertCurrency';
 
 interface HeaderProps {
   title: string;
-  money: string;
-  imageTitle: string;
-  imageSubtitle: string;
+  money: number;
+  automobile: {
+    imageSource: string;
+    mileage: number;
+    year: string;
+    make: string;
+    accord: string;
+  }
   apr: string;
   timeRemaining: string
 }
@@ -31,8 +36,7 @@ interface HeaderProps {
 const CardLoan: React.FC<HeaderProps> = ({
   title,
   money,
-  imageTitle,
-  imageSubtitle,
+  automobile,
   apr,
   timeRemaining
 }) => {
@@ -42,13 +46,13 @@ const CardLoan: React.FC<HeaderProps> = ({
     <Container>
       <TitleContainer>
         <Title>{title}</Title>
-        <Money>{money}</Money>
+        <Money>{convertCurrency(money)}/month</Money>
       </TitleContainer>
       <ImageBlockContainer>
-        <ImageCard src={imageMock} />
+        <ImageCard src={automobile.imageSource} />
         <ImageInformationsContainer>
-          <ImageTitle>{imageTitle}</ImageTitle>
-          <ImageSubtitle>{imageSubtitle}</ImageSubtitle>
+          <ImageTitle>{automobile.year} {automobile.make} {automobile.accord}</ImageTitle>
+          <ImageSubtitle>Estimated {automobile.mileage} mil</ImageSubtitle>
         </ImageInformationsContainer> 
       </ImageBlockContainer>
       <LoanInfoContainer>   
@@ -57,8 +61,8 @@ const CardLoan: React.FC<HeaderProps> = ({
           <FirstBlock>Time remaining</FirstBlock>
         </FirstBlockContainer>
         <SecondBlockContainer>
-          <SecondBlock>{apr}</SecondBlock>
-          <SecondBlock>{timeRemaining}</SecondBlock>
+          <SecondBlock>{apr} %</SecondBlock>
+          <SecondBlock>{timeRemaining} mo</SecondBlock>
         </SecondBlockContainer>
       </LoanInfoContainer>
     </Container>

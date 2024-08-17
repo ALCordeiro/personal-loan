@@ -1,21 +1,25 @@
 import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 import { SuccessContainer, CheckIcon, ThankYouText, InfoText, PhoneNumber, SpeedUpText, TextContainer, IconImage, CardsContainer } from './SuccessPage.styles';
 import { useFormSubmission } from '../context/FormSubmissionContext';
-import { Navigate } from 'react-router-dom';
 import checkIcon from '../common/icons/success-icon.svg';
 import LoanEnum from '../common/enums/LoanEnum';
 import CardLoan from '../components/CardLoan';
 import useIsMobile from '../common/hooks/useIsMobile';
-
+import { useUserData } from '../common/hooks/useUserData';
 
 const SuccessPage: React.FC = () => {
   const { isFormSubmitted } = useFormSubmission();
   const isMobile = useIsMobile();
+  const location = useLocation();
+  const userId = location.state?.userId;
+  
+  const { userData } = useUserData(userId!);
 
   if (!isFormSubmitted) {
     return <Navigate to="/" />;
   }
-  
+
   return (
     <>
       <SuccessContainer>
@@ -31,12 +35,17 @@ const SuccessPage: React.FC = () => {
         </TextContainer>
       </SuccessContainer>
       <CardsContainer isMobile={isMobile}>
-        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil' apr={'2.49%'} timeRemaining='85'/>
-        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil' apr={'2.49%'} timeRemaining='85'/>
-        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil' apr={'2.49%'} timeRemaining='85'/>
-        <CardLoan title='Santander Consumer USA' money='$409/MONTH' imageTitle='2017 Toyota Prius II' imageSubtitle='Estimated 65,000 mil' apr={'2.49%'} timeRemaining='85'/>
+        {userData && userData.loansAvailable.map((loan: any, index: number) => (
+          <CardLoan
+            key={index}
+            title={loan.lender}
+            money={loan.monthlyPayments}
+            automobile={loan.automobile}
+            apr={loan.apr}
+            timeRemaining={loan.remainingMonths}
+          />
+        ))}
       </CardsContainer>
-
     </>
   );
 };

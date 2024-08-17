@@ -30,8 +30,8 @@ export const Money = styled.span`
 `
 
 export const ImageBlockContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 74px 304px 3fr;
   border-bottom: 1px solid #E7E7E7;
   padding-bottom: 20px;
   margin-bottom: 20px;
@@ -45,14 +45,17 @@ export const ImageCard = styled.img`
 export const ImageInformationsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding-left: 16px
 `
 
 export const ImageTitle = styled.span`
-
+  ${fontSize(16)}
+  font-weight: 700;
 `
 
 export const ImageSubtitle = styled.span`
-
+  ${fontSize(12)}
+  padding-top: 12px;
 `
 
 export const LoanInfoContainer = styled.div`
