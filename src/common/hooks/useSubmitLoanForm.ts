@@ -14,7 +14,6 @@ export const useSubmitLoanForm = () => {
     try {
       const numericAmount = parseFloat(data.totalAmount.replace(/[^0-9.-]+/g, ""));
       const response = await submitLoanApplication(numericAmount, data.loanPurpose, data.loanMonths);
-      console.log(response);
       setFormSubmitted(true);
       navigate('/success', { state: { userId: response } });
     } catch (error) {

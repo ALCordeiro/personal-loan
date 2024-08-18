@@ -2,7 +2,6 @@ import { getUserData } from "../userSuccessService";
 
 describe('getUserData', () => {
   beforeEach(() => {
-    // Limpa todos os mocks antes de cada teste
     jest.clearAllMocks();
   });
 
