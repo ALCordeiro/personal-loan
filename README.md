@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+## 🚀 Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created using React and Typescript. Unit tests were created using [react-test-library](https://testing-library.com/docs/react-testing-library/intro/) 
+and [cypress](https://www.cypress.io/) on the E2E tests. I also used [styled-components](https://styled-components.com/) to create all the styles of the application. 
+Global state management was done using [Context](https://react.dev/learn/scaling-up-with-reducer-and-context), native from React. I also used other useful libraries like
+[lodash](https://lodash.com/) to deal with debounces, [react-dnd](https://www.npmjs.com/package/react-dnd) to create a drag and drop effect on the `CardLoan` component used 
+in the `SuccessPage`. The project also was configurated to use [webpack](https://webpack.js.org/) to deal better with packages management.
 
-## Available Scripts
+This project is structured as follows:
 
-In the project directory, you can run:
+    src/
+    ├── cypress/
+    │     └── e2e
+    ├── src
+    │     └── common
+    |           └── enums
+    |           └── hooks
+    |           └── interfaces
+    |           └── services
+    |           └── utils
+    |     └── components
+    |     └── context
+    |     └── pages
 
-### `npm start`
+  - cypress: 
+    - e2e: here you can find all e2e tests;
+  - common:
+    - enums: here you can find the enums used on the application
+    - hooks: here you can find all the custom hooks used on the application
+    - interfaces: here you can find all the interfaces used on the application
+    - services: here you can find all the services used on the application
+    - utils: here you can find all the utils functions used on the application
+  - components: here you can find all the components used on the application
+  - context: here you can find the context used on the application
+  - pages: here you can find all the pages on the application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  **Inside each folder you can algo find a folder called `__tests__`. In this folder you check the unit tests for each file**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 🤔 How to run the application
 
-### `npm test`
+To run the application, follow the following commands:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - In the root `personal-loan` run `npm i`
+    - After install all the packages run `npm start`
+    - Open the application on your browser. Ex: [http://localhost:3000](http://localhost:3000/)
 
-### `npm run build`
+### 🤔 How to run unit tests
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run the unit tests, follow the following commands:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - In the root `personal-loan` run `npm test`
+    - If you want to run a specific unit test you can use `npm test {relative-path}`. Ex: `npm test src/common/hooks/__tests__/useIsmobile.test.ts`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🤔 How to run E2E tests
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+To run the E2E tests, follow the following commands:
+  - Open a terminal and run the application with `npm start`
+  - After that, open another terminal and run the following command `npm run cypress:open`
+    - The cypress cli should appears, now you need to select the option to run E2E and run the `specs` created
