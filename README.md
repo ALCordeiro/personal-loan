@@ -25,7 +25,7 @@ This project is structured as follows:
     |     └── pages
 
   - cypress: 
-    - e2e: here you can find all e2e tests;
+    - e2e: Contains all the e2e tests;
   - common:
     - enums: Contains the enums used in the application
     - hooks: Contains all the custom hooks used in the application
@@ -36,7 +36,7 @@ This project is structured as follows:
   - context: Contains the context used in the application
   - pages: Contains all the pages in the application
 
-  **Inside each folder you can algo find a folder called `__tests__`. In this folder you have the unit tests for each file**
+  **Inside each folder you can also find a folder called `__tests__`. In this folder, you have the unit tests for each file**
 
 ### 🤔 How to run the application
 
