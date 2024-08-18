@@ -21,6 +21,7 @@ const Input: React.FC<IInputProps> = ({
   return (
     <Container>
       <InputWrapper
+        data-cy="input-component"
         required
         onKeyUp={handleKeyUp}
         {...register}

@@ -1,0 +1,64 @@
+{
+  "loansAvailable": [
+    {
+      "apr": "18.3",
+      "balance": 6509,
+      "automobile": {
+        "id": "da5c3b17-2e96-4b73-b652-415b3685302b",
+        "model": "ACCORD",
+        "mileage": 4145,
+        "imageSource": "https://media.chromedata.com/autoBuilderData/stockPhotos/26404.jpg",
+        "make": "HONDA CYPRESS",
+        "registrationDate": "10/2019",
+        "year": "2022"
+      },
+      "id": "b53d2b7d-febc-4f19-8633-7be9b0af02d1",
+      "issueDate": "08/19",
+      "lender": "SANTANDER CONSUMER USA",
+      "monthlyPayments": 157,
+      "originalAmount": 6850,
+      "originalMonths": 72,
+      "remainingMonths": 66
+    },
+    {
+      "apr": "18.3",
+      "balance": 6509,
+      "automobile": {
+        "id": "da5c3b17-2e96-4b73-b652-415b3685302C",
+        "model": "ACCORD",
+        "mileage": 4145,
+        "imageSource": "https://media.chromedata.com/autoBuilderData/stockPhotos/26404.jpg",
+        "make": "HONDA",
+        "registrationDate": "10/2019" ,
+        "year": "2021"  
+      },
+      "id": "b53d2b7d-febc-4f19-8633-7be9b0af02d1",
+      "issueDate": "08/19",
+      "lender": "SANTANDER CONSUMER USA",
+      "monthlyPayments": 157,
+      "originalAmount": 6850,
+      "originalMonths": 72,
+      "remainingMonths": 66
+    },
+    {
+      "apr": "18.3",
+      "balance": 6509,
+      "automobile": {
+        "id": "da5c3b17-2e96-4b73-b652-415b3685302D",
+        "model": "ACCORD",
+        "mileage": 4145,
+        "imageSource": "https://media.chromedata.com/autoBuilderData/stockPhotos/26404.jpg",
+        "make": "HONDA",
+        "registrationDate": "10/2019",
+        "year": "2019"    
+      },
+      "id": "b53d2b7d-febc-4f19-8633-7be9b0af02d1",
+      "issueDate": "08/19",
+      "lender": "SANTANDER CONSUMER USA",
+      "monthlyPayments": 157,
+      "originalAmount": 6850,
+      "originalMonths": 72,
+      "remainingMonths": 66
+    }
+  ]
+}

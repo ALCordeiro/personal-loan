@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
                 />
               )}
             />
-            <Input 
+            <Input
               title={LoanEnum.TOTAL_AMOUNT} 
               handleKeyUp={(e) => {
                 handleKeyUp(e);

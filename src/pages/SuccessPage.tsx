@@ -14,7 +14,7 @@ const SuccessPage: React.FC = () => {
   const { isFormSubmitted } = useFormSubmission();
   const isMobile = useIsMobile();
   const location = useLocation();
-  const userId = location.state?.userId;
+  const { userId } = location.state?.userId;
   const { userData } = useUserData(userId!);
 
   const [loans, setLoans] = useState<Loan[]>([]);
