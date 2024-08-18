@@ -15,7 +15,7 @@ interface IUpsellOpportunity {
 const UpsellOpportunity: React.FC<IUpsellOpportunity> = ({
   monthlyPayment,
   apr,
-}: IUpsellOpportunity) => {
+}) => {
 
   return (
     <Container>

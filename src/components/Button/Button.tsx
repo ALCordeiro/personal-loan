@@ -15,7 +15,7 @@ const Button: React.FC<IButtonProps> = ({
   disabled,
   label,
   ...props
-}: IButtonProps) => {
+}) => {
   const isMobile = useIsMobile();
 
   return (

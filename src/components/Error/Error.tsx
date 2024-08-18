@@ -9,7 +9,7 @@ interface IErrorProps {
 
 const Error: React.FC<IErrorProps> = ({
   errorMessage,
-}: IErrorProps) => {
+}) => {
 
   return (
     <ErrorComponent>{errorMessage}</ErrorComponent>

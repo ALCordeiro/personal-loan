@@ -16,7 +16,7 @@ const Input: React.FC<IInputProps> = ({
   title,
   handleKeyUp,
   register,
-}: IInputProps) => {
+}) => {
 
   return (
     <Container>

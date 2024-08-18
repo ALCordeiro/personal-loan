@@ -13,7 +13,7 @@ interface CustomDropdownProps {
   label: string;
 }
 
-const CustomDropdown: FC<CustomDropdownProps> = ({ options, onSelect, placeholder, label }: CustomDropdownProps) => {
+const CustomDropdown: FC<CustomDropdownProps> = ({ options, onSelect, placeholder, label }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const [isFocused, setIsFocused] = useState(false);

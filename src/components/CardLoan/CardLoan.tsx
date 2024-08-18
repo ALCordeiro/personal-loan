@@ -49,7 +49,7 @@ const CardLoan: React.FC<ICardLoanProps> = ({
   timeRemaining,
   index,
   moveCard
-}: ICardLoanProps) => {
+}) => {
   const { ref, isDragging } = useDraggableCard({ id, index, moveCard });
 
   return (

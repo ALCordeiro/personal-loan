@@ -9,7 +9,7 @@ interface IBadgeProps {
 
 const Badge: React.FC<IBadgeProps> = ({
   title,
-}: IBadgeProps) => {
+}) => {
 
   return (
     <Container>

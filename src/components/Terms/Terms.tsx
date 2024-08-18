@@ -11,7 +11,7 @@ interface ITermsProps {
 
 const Terms: React.FC<ITermsProps> = ({
   text,
-}: ITermsProps) => {
+}) => {
 
   const isMobile = useIsMobile();
 
