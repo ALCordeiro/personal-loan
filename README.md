@@ -11,11 +11,13 @@ This project is structured as follows:
     src/
     ├── cypress/
     │     └── e2e
+    |         └── specs
     ├── src
     │     └── common
     |           └── enums
     |           └── hooks
     |           └── interfaces
+    |           └── icons
     |           └── services
     |           └── utils
     |     └── components
